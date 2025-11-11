@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 export default function ProjectsPage() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Helper function to extract description from README
@@ -85,12 +86,41 @@ export default function ProjectsPage() {
     const fetchReposWithReadmes = async () => {
       try {
         const response = await fetch('https://api.github.com/users/Contzokas/repos?sort=updated&per_page=100');
+        
+        // Check if response is ok
+        if (!response.ok) {
+          const errorMsg = `GitHub API error: ${response.status} ${response.statusText}`;
+          setError(errorMsg);
+          throw new Error(errorMsg);
+        }
+        
         const data = await response.json();
+        
+        // Check if we got an error message from GitHub
+        if (data.message) {
+          console.error('GitHub API message:', data.message);
+          if (data.message.includes('rate limit')) {
+            setError('GitHub API rate limit exceeded. Please try again later.');
+            console.error('Rate limit exceeded. Try again later or add a GitHub token.');
+          } else {
+            setError(data.message);
+          }
+        }
+        
+        // Check if data is an array
+        if (!Array.isArray(data)) {
+          console.error('Unexpected API response:', data);
+          setError('Unexpected response from GitHub API');
+          setLoading(false);
+          return;
+        }
         
         // Filter out forks and sort by stars/updated date
         const filteredRepos = data
           .filter(repo => !repo.fork)
           .sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.updated_at) - new Date(a.updated_at));
+        
+        console.log(`Found ${filteredRepos.length} repositories`);
         
         // Fetch README for each repo
         const reposWithReadmes = await Promise.all(
@@ -107,6 +137,7 @@ export default function ProjectsPage() {
         setLoading(false);
       } catch (err) {
         console.error('Error fetching repos:', err);
+        setError(err.message || 'Failed to fetch repositories');
         setLoading(false);
       }
     };
@@ -134,6 +165,46 @@ export default function ProjectsPage() {
           {loading ? (
             <div className="flex justify-center items-center py-20">
               <div className="w-16 h-16 border-4 border-zinc-300 dark:border-zinc-700 border-t-blue-600 rounded-full animate-spin"></div>
+            </div>
+          ) : error ? (
+            <div className="max-w-2xl mx-auto">
+              <div className="p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-red-100 dark:bg-red-900/40 rounded-lg">
+                    <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">Unable to Load Projects</h3>
+                    <p className="text-red-700 dark:text-red-300 mb-4">{error}</p>
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 text-center">
+                <p className="text-zinc-600 dark:text-zinc-400 mb-4">You can also view my projects directly on GitHub:</p>
+                <a
+                  href="https://github.com/Contzokas?tab=repositories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 rounded-full font-semibold hover:scale-105 transition-all duration-300"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          ) : repos.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-zinc-600 dark:text-zinc-400">No repositories found</p>
             </div>
           ) : (
             <>
