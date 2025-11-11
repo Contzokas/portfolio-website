@@ -12,7 +12,15 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://api.github.com/users/Contzokas')
+    const headers = {
+      'Accept': 'application/vnd.github.v3+json'
+    };
+    
+    if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+      headers['Authorization'] = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
+    }
+
+    fetch('https://api.github.com/users/Contzokas', { headers })
       .then(res => res.json())
       .then(data => {
         setProfile(data);

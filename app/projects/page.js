@@ -11,6 +11,19 @@ export default function ProjectsPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // GitHub API headers with token
+    const getHeaders = () => {
+      const headers = {
+        'Accept': 'application/vnd.github.v3+json'
+      };
+      
+      if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+        headers['Authorization'] = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
+      }
+      
+      return headers;
+    };
+
     // Helper function to extract description from README
     const extractDescriptionFromReadme = (readmeContent) => {
       if (!readmeContent) return null;
@@ -72,7 +85,9 @@ export default function ProjectsPage() {
     // Fetch README for a specific repo
     const fetchReadme = async (owner, repoName) => {
       try {
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repoName}/readme`);
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repoName}/readme`, {
+          headers: getHeaders()
+        });
         if (response.ok) {
           const data = await response.json();
           return extractDescriptionFromReadme(data.content);
@@ -85,7 +100,9 @@ export default function ProjectsPage() {
 
     const fetchReposWithReadmes = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/Contzokas/repos?sort=updated&per_page=100');
+        const response = await fetch('https://api.github.com/users/Contzokas/repos?sort=updated&per_page=100', {
+          headers: getHeaders()
+        });
         
         // Check if response is ok
         if (!response.ok) {
