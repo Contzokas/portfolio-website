@@ -176,7 +176,7 @@ export default function Home() {
           </p>
           
           <a
-            href="https://5tackd.vercel.app"
+            href="https://stackd.contzokas.xyz"
             target="_blank"
             rel="noopener noreferrer"
             className="group block p-8 bg-linear-to-br from-zinc-900 to-zinc-950 rounded-2xl border-2 border-zinc-800 hover:border-blue-500 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 animate-fade-in-up"
@@ -192,7 +192,7 @@ export default function Home() {
                   <h3 className="text-3xl font-bold text-zinc-50 group-hover:text-blue-400 transition-colors mb-1">
                     Stackd
                   </h3>
-                  <p className="text-sm text-zinc-500">5tackd.vercel.app</p>
+                  <p className="text-sm text-zinc-500">stackd.contzokas.xyz</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800 border border-zinc-700 group-hover:border-blue-500 group-hover:bg-blue-500/10 transition-all">
