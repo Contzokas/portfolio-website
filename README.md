@@ -19,7 +19,6 @@ A modern, minimalistic portfolio website showcasing my software development proj
 #### 🏠 **Home**
 - Profile photo with tech grid background
 - GitHub profile integration
-- Spotify "Now Playing" widget
 - About section
 - Featured project (5tackd)
 
@@ -62,10 +61,6 @@ Awards automatically display colors based on placement:
 - Parses README files with UTF-8 support
 - Displays repository statistics
 - Filters out forked repositories
-
-#### 🎵 **Spotify Widget**
-- Real-time "Currently Listening" display
-- Integrated from 6klabs
 
 ## 🛠️ Tech Stack
 
@@ -151,11 +146,10 @@ website-portfolio/
 ### Update Personal Information
 
 1. **GitHub Username**: Change `Contzokas` in API calls
-2. **Spotify Widget**: Replace URL in homepage
-3. **Contact Links**: Update URLs in `app/contact/page.js`
-4. **CV Files**: Replace PDFs in `public/` folder
-5. **Awards**: Edit awards array in `app/awards/page.js`
-6. **Profile Photo**: Replace `app/photos/IMG_1561.jpg`
+2. **Contact Links**: Update URLs in `app/contact/page.js`
+3. **CV Files**: Replace PDFs in `public/` folder
+4. **Awards**: Edit awards array in `app/awards/page.js`
+5. **Profile Photo**: Replace `app/photos/IMG_1561.jpg`
 
 ### Add New Award
 
@@ -202,10 +196,10 @@ Optimized for all devices:
 ## 🎯 Features Roadmap
 
 - [x] GitHub integration
-- [x] Spotify widget
 - [x] Multi-language CV support
 - [x] Dynamic award colors
 - [x] Mobile responsive design
+- [x] Social media posts integration
 - [x] Image galleries
 - [ ] Blog section
 - [ ] Dark/Light mode toggle
@@ -232,7 +226,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - [Next.js](https://nextjs.org/) - React framework
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [6klabs](https://6klabs.com/) - Spotify widget
 - [Vercel](https://vercel.com/) - Hosting platform
 
 ---
