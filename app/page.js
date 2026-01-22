@@ -227,10 +227,8 @@ export default function Home() {
               {/* C */}
               <div className="group p-6 bg-zinc-900/80 backdrop-blur-sm rounded-2xl border border-zinc-800 hover:border-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-purple-500/10 group-hover:bg-purple-500/20 transition-all">
-                    <svg className="w-10 h-10 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M16.5921 9.1962C16.5921 5.9482 14.2281 3.5852 10.9811 3.5852C7.7331 3.5852 5.3691 5.9482 5.3691 9.1962C5.3691 12.4432 7.7331 14.8062 10.9811 14.8062C14.2281 14.8062 16.5921 12.4432 16.5921 9.1962ZM10.9811 12.9062C8.7901 12.9062 7.2691 11.3852 7.2691 9.1962C7.2691 7.0062 8.7901 5.4852 10.9811 5.4852C13.1711 5.4852 14.6921 7.0062 14.6921 9.1962C14.6921 11.3852 13.1711 12.9062 10.9811 12.9062ZM16.1921 15.5562L12.9921 18.7562L11.6921 17.4562L14.8921 14.2562L16.1921 15.5562ZM19.3921 18.7562L16.1921 21.9562L14.8921 20.6562L18.0921 17.4562L19.3921 18.7562Z"/>
-                    </svg>
+                  <div className="p-3 rounded-xl bg-purple-500/10 group-hover:bg-purple-500/20 transition-all flex items-center justify-center">
+                    <span className="text-4xl font-bold text-purple-500">C</span>
                   </div>
                   <h3 className="text-lg font-semibold text-zinc-50">C</h3>
                   <p className="text-xs text-zinc-400 text-center">System Programming</p>
