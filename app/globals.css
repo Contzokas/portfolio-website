@@ -1,97 +1,160 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-space-mono);
+  --color-lime: #AAFF00;
+  --color-coral: #FF6B6B;
+  --color-teal: #4ECDC4;
+  --color-yellow: #FFE66D;
+  --color-surface-light: #FAFAF9;
+  --color-surface-dark: #18181B;
+  --color-ink-light: #1C1917;
+  --color-ink-dark: #FAFAF9;
+  --color-muted-light: #78716C;
+  --color-muted-dark: #A8A29E;
+  --color-border-light: #1C1917;
+  --color-border-dark: #3F3F46;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Light mode (default) */
+:root {
+  --bg: var(--color-surface-light);
+  --fg: var(--color-ink-light);
+  --muted: var(--color-muted-light);
+  --border: var(--color-border-light);
+  --shadow: #1C1917;
+  --card-bg: #FFFFFF;
+  --card-hover-bg: #FFFFFF;
+  --nav-bg: #FAFAF9;
+  --dot-color: rgba(28, 25, 23, 0.08);
+}
+
+.dark {
+  --bg: var(--color-surface-dark);
+  --fg: var(--color-ink-dark);
+  --muted: var(--color-muted-dark);
+  --border: var(--color-border-dark);
+  --shadow: #000000;
+  --card-bg: #27272A;
+  --card-hover-bg: #27272A;
+  --nav-bg: #18181B;
+  --dot-color: rgba(250, 250, 249, 0.05);
 }
 
 * {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--fg);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-/* Custom Animations */
+/* Neo-brutalist utility classes */
+.neo-border {
+  border: 3px solid var(--border);
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.neo-hover {
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.neo-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.neo-card {
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  border-radius: 8px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.neo-btn {
+  border: 3px solid var(--border);
+  border-radius: 8px;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+/* Animations */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes slide-up {
+@keyframes pop-in {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.95) translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
+  animation: fade-in 0.5s ease-out forwards;
 }
 
-.animate-slide-up {
-  animation: slide-up 0.8s ease-out forwards;
+.animate-pop-in {
+  animation: pop-in 0.4s ease-out forwards;
   opacity: 0;
 }
 
-.animate-slide-up.delay-200 {
+.animate-pop-in.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-pop-in.delay-200 {
   animation-delay: 0.2s;
 }
 
-.animate-slide-up.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+.animate-pop-in.delay-300 {
+  animation-delay: 0.3s;
 }
 
 /* Line clamp utility */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
