@@ -47,6 +47,17 @@ export default function AwardsPage() {
         glow: 'shadow-orange-600/10'
       };
     }
+    // Participation (no placement)
+    else if (lowerTitle.includes('participation')) {
+      return {
+        gradient: 'from-blue-500 to-cyan-500',
+        shadow: 'shadow-blue-500/50',
+        border: 'border-blue-500/50',
+        hover: 'hover:border-blue-500',
+        text: 'text-blue-400',
+        glow: 'shadow-blue-500/10'
+      };
+    }
     // Default (any other award)
     else {
       return {
@@ -64,14 +75,22 @@ export default function AwardsPage() {
   const awards = [
     {
       id: 1,
+      title: "Participation – Kiefer AI Open Hackathon",
+      issuer: "Kiefer",
+      date: "April 27–30, 2026",
+      description: "Built MEDΩ, an AI-powered medical triage assistant for the Greek public health system (ΕΣΥ), using Nvidia Nemotron 120B Super, FastAPI, and React.",
+      images: []
+    },
+    {
+      id: 2,
       title: "3rd – RoboRAVE International Finals 2025",
       issuer: "RoboRAVE International (Robotics Education and Competition)",
       date: "August 2025",
       description: "Awarded Bronze medal at the RoboRAVE International Finals 2025, competing against teams from around the world in robotics challenges.",
-      images: ["/awards/1758033648347.jpg"] // Add your award image here
+      images: ["/awards/1758033648347.jpg"]
     },
     {
-      id: 2,
+      id: 3,
       title: "1st Place Award – Collabrew",
       issuer: "University of Thessaly / One Planet Thessaly",
       date: "June 2025",
@@ -79,7 +98,7 @@ export default function AwardsPage() {
       images: ["/awards/Screenshot_1.jpg", "/awards/IMG_3291.jpg"]
     },
     {
-      id: 3,
+      id: 4,
       title: "1st Place – Mouse Labyrinth (Upper / Professional)",
       issuer: "RoboRAVE Greece",
       date: "April 2025",
@@ -154,7 +173,7 @@ export default function AwardsPage() {
                         setCurrentImageIndex(0);
                       }
                     }}
-                    className={`group relative p-4 md:p-8 bg-zinc-900/50 backdrop-blur-sm rounded-2xl border ${colors.border} ${colors.hover} transition-all duration-300 hover:shadow-2xl ${colors.shadow} animate-fade-in-up cursor-pointer`}
+                    className={`group relative p-4 md:p-8 bg-zinc-900/50 backdrop-blur-sm rounded-2xl border ${colors.border} ${colors.hover} transition-all duration-300 hover:shadow-2xl ${colors.shadow} animate-fade-in-up ${award.images && award.images.length > 0 ? 'cursor-pointer' : ''}`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {/* Award Icon */}
