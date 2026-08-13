@@ -193,50 +193,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Project — teal accent */}
-      <section className="py-20 px-6 relative">
-        <div className="absolute top-0 left-0 w-32 h-32 bg-teal rounded-br-[80px]" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <p className="font-mono text-sm uppercase tracking-widest mb-2" style={{ color: 'var(--muted)' }}>
-            Featured Project
-          </p>
-          <a
-            href="https://stackd.contzokas.xyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="neo-card block p-8 group"
-          >
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <h3 className="text-3xl font-bold group-hover:text-teal transition-colors" style={{ color: 'var(--fg)' }}>
-                  Stackd
-                </h3>
-                <p className="font-mono text-sm mt-1" style={{ color: 'var(--muted)' }}>stackd.contzokas.xyz</p>
-              </div>
-              <div className="px-4 py-2 bg-teal text-white font-mono text-sm uppercase font-bold shrink-0">
-                Visit &rarr;
-              </div>
-            </div>
-
-            <p className="mb-6 leading-relaxed" style={{ color: 'var(--muted)' }}>
-              Offline-first task management with drag-and-drop columns and cards.
-              Next.js, Clerk auth, Supabase real-time sync, PWA support, and role-based permissions.
-            </p>
-
-            <div className="flex gap-2 flex-wrap">
-              {["JavaScript", "Web App", "Live Demo"].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 font-mono text-xs uppercase bg-teal/10 text-teal border-[2px] border-teal/30"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </a>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );

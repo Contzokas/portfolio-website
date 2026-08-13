@@ -20,7 +20,6 @@ A modern, minimalistic portfolio website showcasing my software development proj
 - Profile photo with tech grid background
 - GitHub profile integration
 - About section
-- Featured project (5tackd)
 
 #### 💼 **Projects**
 - Auto-synced with GitHub repositories

@@ -13,9 +13,69 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const siteUrl = "https://contzokas.xyz";
+
 export const metadata = {
-  title: "Constantinos Tzokas | Developer Portfolio",
-  description: "Software developer passionate about creating innovative solutions. Explore my coding projects and experience.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Constantinos Tzokas | Software Developer",
+    template: "%s | Constantinos Tzokas",
+  },
+  description:
+    "Official website of Constantinos Tzokas — software developer based in Greece. Explore my projects, awards, CV, and open-source work across Python, JavaScript, Java, Next.js and more.",
+  keywords: [
+    "Constantinos Tzokas",
+    "Konstantinos Tzokas",
+    "Κωνσταντίνος Τζώκας",
+    "software developer",
+    "software engineer",
+    "developer portfolio",
+    "full stack developer",
+    "Greece developer",
+    "Python",
+    "JavaScript",
+    "Next.js",
+  ],
+  authors: [{ name: "Constantinos Tzokas", url: siteUrl }],
+  creator: "Constantinos Tzokas",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Constantinos Tzokas | Software Developer",
+    title: "Constantinos Tzokas | Software Developer",
+    description:
+      "Software developer based in Greece. Explore my projects, awards, CV, and open-source work.",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Constantinos Tzokas — Software Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Constantinos Tzokas | Software Developer",
+    description:
+      "Software developer based in Greece. Explore my projects, awards, CV, and open-source work.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -33,6 +93,40 @@ export const metadata = {
   manifest: '/site.webmanifest',
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Constantinos Tzokas",
+  alternateName: "Konstantinos Tzokas",
+  url: siteUrl,
+  image: `${siteUrl}/og-image.jpg`,
+  jobTitle: "Software Developer",
+  email: "mailto:contzokas@proton.me",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "GR",
+  },
+  knowsAbout: [
+    "Python",
+    "JavaScript",
+    "Java",
+    "C",
+    "PHP",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Tailwind CSS",
+    "WordPress",
+    "Git",
+  ],
+  sameAs: [
+    "https://github.com/Contzokas",
+    "https://www.linkedin.com/in/constantinos-tzokas/",
+    "https://www.facebook.com/konnos.tzokas/",
+    "https://www.instagram.com/con.tzokas/",
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -48,6 +142,10 @@ export default function RootLayout({ children }) {
               })();
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
