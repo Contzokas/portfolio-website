@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://contzokas.xyz";
+  const baseUrl = "https://www.contzokas.xyz";
 
   return [
     {

@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://contzokas.xyz/sitemap.xml",
+    sitemap: "https://www.contzokas.xyz/sitemap.xml",
   };
 }

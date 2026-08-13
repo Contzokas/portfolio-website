@@ -13,7 +13,7 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-const siteUrl = "https://contzokas.xyz";
+const siteUrl = "https://www.contzokas.xyz";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
