@@ -86,7 +86,7 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-bold mb-4 animate-pop-in delay-100" style={{ color: 'var(--fg)' }}>
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold mb-4 animate-pop-in delay-100" style={{ color: 'var(--fg)' }}>
             Constantinos Tzokas
           </h1>
 
@@ -124,7 +124,7 @@ export default function Home() {
       <section className="py-20 px-6 relative">
         <div className="absolute top-0 left-0 w-full h-2 bg-coral" />
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-5 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
             <div className="md:col-span-3">
               <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--fg)' }}>
                 About
@@ -143,13 +143,16 @@ export default function Home() {
                 </svg>
               </a>
             </div>
-            <div className="md:col-span-2 flex md:flex-col gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-col gap-4 md:gap-6">
               {!loading && [
                 { value: profile?.public_repos || 0, label: "Repos", accent: "bg-lime" },
                 { value: profile?.followers || 0, label: "Followers", accent: "bg-coral/20" },
                 { value: profile?.following || 0, label: "Following", accent: "bg-teal/20" },
-              ].map(({ value, label, accent }) => (
-                <div key={label} className="neo-card p-5 text-center">
+              ].map(({ value, label, accent }, i) => (
+                <div
+                  key={label}
+                  className={`neo-card p-5 text-center min-w-0 ${i === 2 ? 'col-span-2 sm:col-span-1' : ''}`}
+                >
                   <div className={`text-4xl font-bold font-mono inline-block px-4 py-1 ${accent} rounded`}>
                     {value}
                   </div>

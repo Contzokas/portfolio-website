@@ -116,7 +116,7 @@ export default function AwardsPage() {
                     cursor: hasImages ? 'pointer' : 'default',
                   }}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
                     <div
                       className="font-mono text-xs uppercase tracking-wider px-3 py-1 shrink-0 border-[3px] border-(--border) font-bold mt-1"
                       style={{ background: style.tagBg, color: style.tagText }}
@@ -166,7 +166,7 @@ export default function AwardsPage() {
                   setSelectedAward(null);
                   setCurrentImageIndex(0);
                 }}
-                className="absolute -top-10 right-0 text-white hover:text-lime transition-colors z-50"
+                className="absolute -top-12 right-0 p-2 text-white hover:text-lime transition-colors z-50"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

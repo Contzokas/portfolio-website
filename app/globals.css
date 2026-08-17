@@ -50,6 +50,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent accidental horizontal scroll on mobile from any wide content */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   color: var(--fg);
   font-family: var(--font-space-grotesk), system-ui, sans-serif;

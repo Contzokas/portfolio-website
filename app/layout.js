@@ -15,6 +15,13 @@ const spaceMono = Space_Mono({
 
 const siteUrl = "https://www.contzokas.xyz";
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF9" },
+    { media: "(prefers-color-scheme: dark)", color: "#18181B" },
+  ],
+};
+
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {

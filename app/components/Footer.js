@@ -7,7 +7,7 @@ export default function Footer() {
         <p className="font-mono text-sm" style={{ color: 'var(--muted)' }}>
           &copy; {new Date().getFullYear()} Constantinos Tzokas
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
           {[
             { href: "/", label: "Home" },
             { href: "/projects", label: "Projects" },
@@ -22,7 +22,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm uppercase tracking-wide hover:text-lime transition-colors"
+                className="font-mono text-sm uppercase tracking-wide hover:text-lime transition-colors px-1 py-2.5"
                 style={{ color: 'var(--muted)' }}
               >
                 {label}
@@ -31,7 +31,7 @@ export default function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="font-mono text-sm uppercase tracking-wide hover:text-lime transition-colors"
+                className="font-mono text-sm uppercase tracking-wide hover:text-lime transition-colors px-1 py-2.5"
                 style={{ color: 'var(--muted)' }}
               >
                 {label}

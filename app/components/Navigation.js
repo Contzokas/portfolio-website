@@ -29,7 +29,7 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--nav-bg)] border-b-[3px] border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold font-mono" style={{ color: 'var(--fg)' }}>
+        <Link href="/" className="text-2xl font-bold font-mono p-2 -ml-2" style={{ color: 'var(--fg)' }}>
           C<span className="text-lime">T</span>
         </Link>
 
@@ -48,7 +48,7 @@ export default function Navigation() {
 
           <button
             onClick={toggleTheme}
-            className="p-2 ml-2 neo-btn bg-transparent"
+            className="p-3 ml-2 neo-btn bg-transparent"
             style={{ color: 'var(--fg)' }}
             aria-label="Toggle theme"
           >
@@ -77,10 +77,10 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-1">
           <button
             onClick={toggleTheme}
-            className="p-2"
+            className="p-3"
             style={{ color: 'var(--fg)' }}
             aria-label="Toggle theme"
           >
@@ -96,9 +96,10 @@ export default function Navigation() {
           </button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2"
+            className="p-3"
             style={{ color: 'var(--fg)' }}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
